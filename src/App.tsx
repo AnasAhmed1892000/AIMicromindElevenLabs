@@ -1,23 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { Conversation } from "@11labs/client";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 import animationData from "./assets/call-animation.json";
 
 function App() {
-  const [conversation, setConversation] = useState(null);
+  const [conversation, setConversation] = useState<any>(null);
   const [connectionStatus, setConnectionStatus] = useState("Disconnected");
   const [agentStatus, setAgentStatus] = useState("listening");
   const hasStartedRef = useRef(false);
-
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice", // Adjust as needed
-    },
-  };
   async function startConversation() {
     try {
       // Request microphone permission
@@ -37,7 +28,7 @@ function App() {
         onError: (error) => {
           console.error("Error:", error);
         },
-        onModeChange: async (mode) => {
+        onModeChange: async (mode: any) => {
           setAgentStatus(mode.mode === "speaking" ? "speaking" : "listening");
 
           // Play audio if the agent is speaking
@@ -112,7 +103,7 @@ function App() {
             marginBottom: "1.5rem",
           }}
         >
-          <Lottie options={defaultOptions} />
+          <Lottie animationData={animationData} loop={true} />
         </div>
 
         <div
