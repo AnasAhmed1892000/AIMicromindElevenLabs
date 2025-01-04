@@ -9,6 +9,7 @@ function App() {
   const [connectionStatus, setConnectionStatus] = useState("Disconnected");
   const [agentStatus, setAgentStatus] = useState("listening");
   const hasStartedRef = useRef(false);
+  const agentId = import.meta.env.VITE_API_KEY;
   async function startConversation() {
     try {
       // Request microphone permission
@@ -18,7 +19,7 @@ function App() {
 
       // Start the conversation
       const newConversation = await Conversation.startSession({
-        agentId: "3tuF4dalSp7hgryJuLqC", // Replace with your agent ID
+        agentId: agentId, // Replace with your agent ID
         onConnect: () => {
           setConnectionStatus("Connected");
         },
