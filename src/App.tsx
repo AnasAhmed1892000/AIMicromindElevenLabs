@@ -101,7 +101,7 @@ function App() {
         }}
       >
         <img
-          src="./public/MicroMind.png" // Replace with the actual path to your logo
+          src="/MicroMind.png" // Replace with the actual path to your logo
           alt="Company Logo"
           style={{
             // padding: '5px',
